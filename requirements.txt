@@ -1,0 +1,9 @@
+ultralytics==8.3.228
+torch==2.8.0
+torchvision==0.23.0
+opencv-python==4.11.0.86
+numpy==1.26.4
+fastapi==0.162.0
+uvicorn==0.54.0
+python-multipart==0.0.32
+reportlab==4.5.1

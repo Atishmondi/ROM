@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "input_name": "hello.mp4",
+  "input_sha256": "528c8acd73871c655f7aaad2b2a974f0d836c4dbd1e4bc0a747e38ba289aef31",
+  "coordinate_width": 1280,
+  "coordinate_height": 720,
+  "reference_kind": "approximate_visual_landmark_annotations",
+  "notes": [
+    "These points were visually marked on the original video before examining the replacement model predictions.",
+    "Approximate 2D image references, not clinical ground truth. Joint centers can be ambiguous; assume roughly 10\u201320px marking uncertainty at 1280x720.",
+    "Only the visible near (anatomical left) arm is labeled. No hidden joints are inferred.",
+    "This small development sample is not an independent held-out validation set.",
+    "Four additional check frames were marked after selecting full-context 960px flip consensus, before running those frames through the new model. They are from the same clip, so are not an external test set."
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "side": "left",
+      "shoulder": [
+        625,
+        215
+      ],
+      "elbow": [
+        739,
+        348
+      ],
+      "wrist": [
+        705,
+        468
+      ],
+      "split": "development"
+    },
+    {
+      "frame": 26,
+      "side": "left",
+      "shoulder": [
+        555,
+        425
+      ],
+      "elbow": [
+        713,
+        333
+      ],
+      "wrist": [
+        705,
+        465
+      ],
+      "split": "development"
+    },
+    {
+      "frame": 75,
+      "side": "left",
+      "shoulder": [
+        665,
+        190
+      ],
+      "elbow": [
+        730,
+        337
+      ],
+      "wrist": [
+        706,
+        476
+      ],
+      "split": "development"
+    },
+    {
+      "frame": 125,
+      "side": "left",
+      "shoulder": [
+        565,
+        326
+      ],
+      "elbow": [
+        748,
+        349
+      ],
+      "wrist": [
+        708,
+        473
+      ],
+      "split": "development"
+    },
+    {
+      "frame": 50,
+      "side": "left",
+      "shoulder": [
+        623,
+        237
+      ],
+      "elbow": [
+        739,
+        353
+      ],
+      "wrist": [
+        705,
+        473
+      ],
+      "split": "check"
+    },
+    {
+      "frame": 100,
+      "side": "left",
+      "shoulder": [
+        552,
+        402
+      ],
+      "elbow": [
+        735,
+        335
+      ],
+      "wrist": [
+        706,
+        472
+      ],
+      "split": "check"
+    },
+    {
+      "frame": 175,
+      "side": "left",
+      "shoulder": [
+        558,
+        335
+      ],
+      "elbow": [
+        748,
+        345
+      ],
+      "wrist": [
+        705,
+        473
+      ],
+      "split": "check"
+    },
+    {
+      "frame": 225,
+      "side": "left",
+      "shoulder": [
+        670,
+        175
+      ],
+      "elbow": [
+        714,
+        333
+      ],
+      "wrist": [
+        704,
+        476
+      ],
+      "split": "check"
+    }
+  ]
+}

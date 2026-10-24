@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark"><title>Elbow ROM</title>
+<link rel="stylesheet" href="/assets/styles.css"><script src="/assets/app.js" defer></script>
+</head>
+<body data-state="empty">
+<header class="app-toolbar">
+ <div class="toolbar-identity"><button id="sidebar-toggle" class="icon-button mobile-only" aria-label="Show library" aria-expanded="false"><span class="icon i-folder"></span></button><a class="brand" href="/" aria-label="Elbow ROM home"><span class="brand-mark" aria-hidden="true">∠</span><span>Elbow ROM</span></a></div>
+ <div class="document-title"><span id="document-name">Untitled analysis</span><span id="document-status">Video analysis</span></div>
+ <div class="toolbar-actions"><a class="icon-button" href="#recording-guide" id="guide-link" aria-label="Recording guide"><span class="icon i-info-circle"></span></a><button id="change-file" class="quiet-button" hidden><span class="icon i-upload"></span>Replace video</button></div>
+</header>
+<button id="sidebar-scrim" class="sidebar-scrim" aria-label="Close library" hidden></button>
+<div class="app-layout">
+ <aside class="library" aria-label="Analysis library">
+  <div class="library-heading"><h2>Library</h2><button id="close-library" class="icon-button mobile-only" aria-label="Close library"><span class="icon i-x"></span></button></div>
+  <button id="new-analysis" class="library-new" disabled><span class="icon i-plus"></span>New analysis</button>
+  <div class="recent-heading">Recent analyses</div><nav id="recent-list" aria-label="Recent analyses"><p class="library-empty">Your videos will appear here.</p></nav>
+  <div class="sidebar-bottom">
+   <details id="recording-guide"><summary><span class="icon i-info-circle"></span>Recording guide</summary><div class="guide-copy"><p><b>One person.</b> Keep the shoulder, elbow and wrist in view.</p><p><b>A side view.</b> Move the arm roughly parallel to the camera.</p><p><b>A steady recording.</b> Avoid blur and obstructions.</p></div></details>
+   <label class="appearance">Appearance<select id="theme-picker" aria-label="Appearance"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
+   <p class="scope-note">2D estimates from video.<br>Not clinically validated.</p>
+  </div>
+ </aside>
+ <main class="workspace" id="workspace">
+  <div class="viewer-toolbar"><div class="view-switch" role="group" aria-label="Video view"><button id="view-original" aria-pressed="true" disabled>Original</button><button id="view-analyzed" aria-pressed="false" disabled>Analyzed</button></div><span id="video-meta" class="video-meta">No video selected</span></div>
+  <section id="drop-zone" class="viewer" aria-label="Video workspace">
+   <div id="empty-view" class="empty-view"><span class="import-symbol"><span class="icon i-video"></span></span><h1>Choose your video</h1><p>Drop a recording here to measure elbow movement.</p><button id="choose-file" class="primary-button"><span class="icon i-plus"></span>Choose video</button><small id="upload-limit">Common video formats, up to 1 GB</small></div>
+   <video id="source-preview" controls playsinline muted preload="metadata" aria-label="Your original video" hidden></video>
+   <video id="result-video" controls playsinline muted preload="metadata" aria-label="Analyzed video with measured elbow angles" hidden></video>
+   <div id="video-unavailable" class="video-unavailable" hidden><span class="icon i-video"></span><p>This format cannot be previewed in your browser.</p><span>You can still analyze the recording.</span></div>
+   <div class="drop-feedback"><span class="icon i-upload"></span>Drop to import video</div>
+  </section>
+  <div class="player-controls"><div class="playback-buttons"><button id="step-back" class="icon-button" aria-label="Previous frame" disabled><span class="icon i-player-skip-back"></span></button><button id="play-toggle" class="icon-button play-button" aria-label="Play video" disabled><span class="icon i-player-play"></span></button><button id="step-forward" class="icon-button" aria-label="Next frame" disabled><span class="icon i-player-skip-forward"></span></button></div><span id="time-current" class="time-code">00:00.00</span><input id="scrubber" type="range" min="0" max="1" step="0.001" value="0" aria-label="Video position" disabled><span id="time-duration" class="time-code">00:00.00</span><select id="playback-speed" aria-label="Playback speed" disabled><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select><button id="fullscreen" class="icon-button" aria-label="Full screen" disabled><span class="icon i-maximize"></span></button></div>
+  <section class="timeline" aria-label="Flexion over time"><div class="timeline-heading"><h2>Flexion over time</h2><div class="plot-legend"><span class="legend-left">Left</span><span class="legend-right">Right</span></div></div><div class="chart-wrap"><canvas id="angle-chart" aria-label="Elbow flexion graph from 0 to 180 degrees"></canvas><p id="chart-empty">Measurements appear here after analysis.</p></div></section>
+ </main>
+ <aside class="inspector" id="inspector" aria-label="Measurements and report">
+  <div class="inspector-heading"><h2>Measurements</h2><span id="result-badge" class="status-label">No analysis</span></div>
+  <div class="arm-switch" role="group" aria-label="Measured arm"><button id="arm-left" aria-pressed="true">Left elbow</button><button id="arm-right" aria-pressed="false">Right elbow</button></div>
+  <section class="frame-measurement"><div class="measurement-heading"><span>Current frame</span><span id="frame-number">No frame</span></div><div class="angle-readings"><div><span class="measure-label">Inside angle</span><div id="inside-value" class="angle-value">Not measured</div></div><div><span class="measure-label">Flexion</span><div id="flexion-value" class="flexion-value">Not measured</div></div></div><p id="current-angles" class="angle-context">Inside angle + flexion = 180°</p><details class="angle-explainer"><summary>What's the difference?</summary><p>Inside angle is the visible angle between the upper arm and forearm. Flexion measures the bend away from straight. A 108° inside angle is 72° flexion.</p></details></section>
+  <section class="clip-measurement"><h3>Across the clip</h3><dl id="arm-results"><div><dt>Movement range</dt><dd>Not measured</dd></div><div><dt>Inside angle</dt><dd>Not measured</dd></div><div><dt>Flexion</dt><dd>Not measured</dd></div><div><dt>Frames measured</dt><dd>Not measured</dd></div></dl><p id="coverage-note" class="coverage-note" hidden></p><p id="range-note" class="inspector-note">Ranges summarize the recorded movement.</p></section>
+  <div class="inspector-action"><button id="analyze" class="primary-button" disabled>Analyze video<span class="icon i-chart-line"></span></button><div id="job-progress" class="job-progress" hidden><div class="progress-title"><span id="progress-title">Preparing analysis</span><span id="progress-label"></span></div><progress id="progress" max="100" aria-label="Analysis progress"></progress><p id="progress-detail"></p></div><div id="message" class="message" role="alert" hidden></div></div>
+  <section class="report-section"><div class="report-heading"><span class="icon i-file-text"></span><div><h3>Analysis report</h3><p id="report-status">Generated when analysis finishes.</p></div></div><a id="pdf-link" class="export-button" role="link" aria-disabled="true"><span class="icon i-download"></span>Download PDF report</a><div id="other-exports" hidden><a id="bundle-link" class="bundle-link"><span>Download all files</span><span class="icon i-download"></span></a><details class="other-formats"><summary>Other formats</summary><div><a id="report-link" target="_blank" rel="noopener">Interactive report</a><a id="video-link">Annotated video · MP4</a><a id="csv-link">Measurements · CSV</a><a id="json-link">Summary · JSON</a></div></details></div></section>
+  <p class="inspector-footnote">S shoulder · E elbow · W wrist<br>Left and right refer to the person's body.</p>
+ </aside>
+</div>
+<input id="video-file" type="file" accept="video/*,.mkv,.avi,.mov,.m4v,.mts,.m2ts,.wmv" hidden>
+</body></html>
