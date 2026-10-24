@@ -119,7 +119,7 @@ The app does not diagnose movement limitations. A convincing overlay is not a su
 
 Command-line analysis, configurable thresholds, checkpoint recovery and comparison exports are documented in [the technical guide](docs/USAGE.md).
 
-The original DensePose experiment is preserved in [`legacy/densepose/`](legacy/densepose/). Its optional `detectron2` submodule is not needed to run the current app.
+The original DensePose experiment is preserved in [`legacy/densepose/`](legacy/densepose/) for reference. The active app uses YOLO11 Pose; Detectron2 is not included or required.
 
 ## Built with
 

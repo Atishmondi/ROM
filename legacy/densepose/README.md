@@ -5,5 +5,7 @@ calculate elbow angles. Its Desktop import path and relative base configuration
 were incomplete. It is archived for reference and is not part of the runnable
 application. Use the root `main.py` for the completed measurement pipeline.
 
-The optional root `detectron2/` checkout belongs to this experiment. The active
-application uses MediaPipe Tasks and does not import or install Detectron2.
+This archived code depends on a separate Detectron2/DensePose installation and
+retains its original incomplete setup. Detectron2 is no longer bundled with the
+project. The active application uses YOLO11 Pose and does not import or install
+Detectron2 or this archived experiment.
