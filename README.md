@@ -4,7 +4,9 @@ A local web app that measures elbow movement from video. Upload a recording, ins
 
 The app shows **both the visible inside angle and elbow flexion**, frame by frame. It also reports how much movement was observed across the clip, with tracking coverage alongside the result.
 
-![Elbow ROM workspace showing an analyzed video, a flexion timeline, live joint angles and PDF export](docs/images/workspace.jpg)
+[![Watch the Elbow ROM demo](docs/images/demo-preview.jpg)](https://github.com/Atishmondi/ROM/raw/refs/heads/main/docs/Elbow-ROM-launch.mp4)
+
+**[Watch the 22-second demo](https://github.com/Atishmondi/ROM/raw/refs/heads/main/docs/Elbow-ROM-launch.mp4)** — original and annotated footage, the analysis workspace, and the generated PDF report.
 
 [Try it locally](#try-it-locally) · [Example PDF](docs/example-report.pdf) · [Technical guide](docs/USAGE.md) · [Evaluation notes](validation/RESULTS.md)
 
@@ -15,7 +17,7 @@ The app shows **both the visible inside angle and elbow flexion**, frame by fram
 - **Follow either arm.** Select the left or right elbow to see its current angles, movement range and proportion of frames measured.
 - **Take the results with you.** Download the PDF, annotated video, raw measurements or a ZIP containing the analysis files.
 
-The interface supports light and dark appearance, a mobile layout and links to recent analyses saved in the browser. The screenshot above shows a real completed test upload.
+The interface supports light and dark appearance, a mobile layout and links to recent analyses saved in the browser. The demo includes the workspace from a real completed test upload.
 
 ## Try it locally
 
